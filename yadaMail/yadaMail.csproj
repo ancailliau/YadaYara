@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net5.0</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="MailKit" Version="2.10.1" />
+      <PackageReference Include="Spectre.Console" Version="0.38.0" />
+      <PackageReference Include="System.CommandLine" Version="2.0.0-beta1.20574.7" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\..\Projects\dnYara\dnYara\dnYara.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Reference Include="dnYara, Version=1.0.3.4, Culture=neutral, PublicKeyToken=null">
+        <HintPath>..\..\..\Projects\dnYara\dnYara\bin\Debug\netstandard2.0\dnYara.dll</HintPath>
+      </Reference>
+    </ItemGroup>
+
+</Project>
