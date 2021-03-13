@@ -29,15 +29,10 @@ namespace yadaMail
             _directories = new List<DirectoryInfo>();
         }
 
-        public void Connect(string username)
+        public void Connect(string username, string password)
         {
             _client = new ImapClient ();
             _client.Connect (_host, _port, SecureSocketOptions.SslOnConnect);
-                
-            var password = AnsiConsole.Prompt(
-                new TextPrompt<string>($"Enter password for {username}")
-                    .PromptStyle("red")
-                    .Secret());
             _client.Authenticate (username, password);
         }
 
