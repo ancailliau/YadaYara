@@ -73,7 +73,9 @@ namespace yadaMail
                             var entity = folder.GetBodyPart (message.UniqueId, attachment);
                             var part = (MimePart) entity;
                             AnsiConsole.Render(new Markup($"[grey]Scanning Attachment {part.FileName}[/]\n"));
-                            ScanAttachment(scanner, part.Content.Stream, part.FileName);
+                            using var stream = new MemoryStream();
+                            part.Content.DecodeTo(stream);
+                            ScanAttachment(scanner, stream, part.FileName);
                         }
                     }
                 }
