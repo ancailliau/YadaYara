@@ -71,11 +71,17 @@ namespace yadaMail
                         foreach (var attachment in message.BodyParts.Where(x => x.IsAttachment))
                         {
                             var entity = folder.GetBodyPart (message.UniqueId, attachment);
-                            var part = (MimePart) entity;
-                            AnsiConsole.Render(new Markup($"[grey]Scanning Attachment {part.FileName}[/]\n"));
-                            using var stream = new MemoryStream();
-                            part.Content.DecodeTo(stream);
-                            ScanAttachment(scanner, stream, part.FileName);
+                            if (entity is MimePart part)
+                            {
+                                AnsiConsole.Render(new Markup($"[grey]Scanning Attachment {part.FileName}[/]\n"));
+                                using var stream = new MemoryStream();
+                                part.Content.DecodeTo(stream);
+                                ScanAttachment(scanner, stream, part.FileName);   
+                            }
+                            else
+                            {
+                                AnsiConsole.Render(new Markup($"[grey]Ignoring {entity.GetType().FullName}[/]\n"));
+                            }
                         }
                     }
                 }

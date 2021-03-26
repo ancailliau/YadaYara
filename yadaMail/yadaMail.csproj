@@ -8,6 +8,7 @@
     <ItemGroup>
       <PackageReference Include="dnyara" Version="1.0.3.4" />
       <PackageReference Include="MailKit" Version="2.11.1" />
+      <PackageReference Include="Mono.Posix.NETStandard" Version="1.0.0" />
       <PackageReference Include="Spectre.Console" Version="0.38.0" />
       <PackageReference Include="System.CommandLine" Version="2.0.0-beta1.20574.7" />
     </ItemGroup>
